@@ -1,0 +1,2 @@
+Bài toán: tìm một chuỗi con đối xứng dài nhất của một chuỗi s độ dài n cho trước. Chuỗi con là chuỗi thu được khi xóa đi một số ký tự từ chuỗi ban đầu.
+P/S: Đoạn code này sử dụng vừa đệ quy vừa quy hoạch động
