@@ -6,7 +6,6 @@ n,i,j,bac:integer;
 write('Nhap bac n: ');readln(n);
 Clrscr;
 for i:=1 to n+1 do m[i]:=0; m[1]:=1;
-
 for i:=0 to n do
  Begin
 for j:=i+1 downto 2 do m[j]:=m[j]+m[j-1];
