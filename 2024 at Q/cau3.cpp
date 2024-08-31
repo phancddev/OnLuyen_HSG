@@ -7,8 +7,8 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     
-    ifstream inputFile("bai3.inp");
-    ofstream outputFile("bai3.out");
+    ifstream inputFile("CAU3.inp");
+    ofstream outputFile("CAU3.out");
 
    
     int N, K;
