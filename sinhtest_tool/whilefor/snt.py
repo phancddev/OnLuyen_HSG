@@ -1,11 +1,11 @@
 import os
 import random
+import math
 
-# Hàm kiểm tra số nguyên tố đơn giản
 def is_prime(n):
-    if n < 2:
+    if n <= 1:
         return False
-    if n == 2 or n == 3:
+    if n <= 3:
         return True
     if n % 2 == 0 or n % 3 == 0:
         return False
@@ -16,34 +16,35 @@ def is_prime(n):
         i += 6
     return True
 
-# Hàm sinh test và tạo folder
-def generate_prime_tests(num_tests):
-    if not os.path.exists("snt_tests"):
-        os.mkdir("snt_tests")
+def sieve(n):
+    primes = []
+    for i in range(2, n + 1):
+        if is_prime(i):
+            primes.append(i)
+    return primes
 
-    for i in range(1, num_tests + 1):
-        # Tạo folder cho từng test
-        folder_name = f"snt_tests/{i}"
-        os.mkdir(folder_name)
-
-        # Sinh ngẫu nhiên một số n trong khoảng từ 10^17 đến 10^18
-        n = random.randint(10**17, 10**18)
-
-        # Ghi vào file input
+def generate_tests():
+    base_folder = "all_tests"
+    os.makedirs(base_folder, exist_ok=True)
+    
+    for test_num in range(1, 100):
+        folder_name = f"{base_folder}/{test_num:02d}"
+        os.makedirs(folder_name, exist_ok=True)
+        n = random.randint(1, 10**12)
         with open(f"{folder_name}/snt.inp", "w") as inp_file:
             inp_file.write(f"{n}\n")
-
-        # Liệt kê các số nguyên tố từ 1 đến n
-        primes = []
-        for num in range(10**17, n + 1):
-            if is_prime(num):
-                primes.append(str(num))
-
-        # Ghi vào file output
+        primes = sieve(int(math.sqrt(n)))
         with open(f"{folder_name}/snt.out", "w") as out_file:
-            out_file.write(" ".join(primes) + "\n")
+            out_file.write(" ".join(map(str, primes)) + "\n")
+    
+    for test_num in range(101, 200):
+        folder_name = f"{base_folder}/{test_num:02d}"
+        os.makedirs(folder_name, exist_ok=True)
+        n = random.randint(10**15, 10**18)
+        with open(f"{folder_name}/snt.inp", "w") as inp_file:
+            inp_file.write(f"{n}\n")
+        primes = sieve(int(math.sqrt(n)))
+        with open(f"{folder_name}/snt.out", "w") as out_file:
+            out_file.write(" ".join(map(str, primes)) + "\n")
 
-if __name__ == "__main__":
-    num_tests = 10  # Số lượng test cần sinh
-    generate_prime_tests(num_tests)
-    print("Đã sinh các test từ 10^17 đến 10^18 trong folder snt_tests.")
+generate_tests()
