@@ -1,0 +1,1 @@
+{"name":"Local: palinsub","url":"/Users/phancd/Documents/OnLuyen_HSG/2024 at Q/bai a Phat/12-10/palinsub.cpp","tests":[{"id":1728719323577,"input":"3\na\nba\naa","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/phancd/Documents/OnLuyen_HSG/2024 at Q/bai a Phat/12-10/palinsub.cpp","group":"local","local":true}

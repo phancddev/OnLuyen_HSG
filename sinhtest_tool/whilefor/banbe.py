@@ -15,15 +15,39 @@ def sum_of_divisors(num):
 def are_friends(n, m):
     return sum_of_divisors(n) == m and sum_of_divisors(m) == n
 
+# Một số cặp số bạn bè đã biết
+def known_friend_pairs():
+    return [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]
+
 # Hàm sinh test và tạo folder
-def generate_tests(num_tests):
+def generate_tests(num_tests, num_friend_tests):
     if not os.path.exists("banbe"):
         os.mkdir("banbe")
 
-    for i in range(1, num_tests + 1):
-        # Tạo folder cho từng test
-        folder_name = f"banbe/{i:02}"  # Định dạng số với 2 chữ số (01, 02, 03,...)
+    # Lấy các cặp số bạn bè đã biết
+    friends_pairs = known_friend_pairs()
 
+    # Sinh các test chắc chắn có output là 1
+    for i in range(1, num_friend_tests + 1):
+        # Tạo folder cho từng test
+        folder_name = f"banbe/{i}"
+        os.mkdir(folder_name)
+
+        # Chọn ngẫu nhiên một cặp số bạn bè
+        n, m = random.choice(friends_pairs)
+
+        # Ghi vào file banbe.inp
+        with open(f"{folder_name}/banbe.inp", "w") as inp_file:
+            inp_file.write(f"{n} {m}\n")
+
+        # Ghi kết quả vào banbe.out (luôn là 1)
+        with open(f"{folder_name}/banbe.out", "w") as out_file:
+            out_file.write("1\n")
+
+    # Sinh các test ngẫu nhiên có thể ra kết quả 1 hoặc 0
+    for i in range(num_friend_tests + 1, num_tests + 1):
+        # Tạo folder cho từng test
+        folder_name = f"banbe/{i}"
         os.mkdir(folder_name)
 
         # Sinh ngẫu nhiên hai số n và m
@@ -43,5 +67,6 @@ def generate_tests(num_tests):
 
 if __name__ == "__main__":
     num_tests = 100  # Số lượng test cần sinh
-    generate_tests(num_tests)
+    num_friend_tests = 10  # Số lượng test chắc chắn ra 1
+    generate_tests(num_tests, num_friend_tests)
     print("Đã sinh 100 folder với các file banbe.inp và banbe.out trong folder banbe.")
