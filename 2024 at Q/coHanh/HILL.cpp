@@ -7,7 +7,7 @@ vector<int> c;
 int n, m, t;
 long long x = 0;
 
-struct D {
+struct D {  
     vector<int> p, l, cur;
     D(int n): p(n + 5), l(n + 5), cur(n + 5) {
         for (int i = 0; i <= n; ++i) {

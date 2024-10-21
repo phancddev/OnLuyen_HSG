@@ -1,0 +1,1 @@
+{"name":"Local: paper","url":"/Users/phancd/Documents/OnLuyen_HSG/2024 at Q/bai a Phat/19-10/paper.cpp","tests":[{"id":1729325162143,"input":"5\n3 2 9 3 2\n5 5 5 5 5","output":"0.0000000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/phancd/Documents/OnLuyen_HSG/2024 at Q/bai a Phat/19-10/paper.cpp","group":"local","local":true}
