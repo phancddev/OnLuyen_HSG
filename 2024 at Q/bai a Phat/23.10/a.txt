@@ -1,0 +1,88 @@
+B. Largest Number
+
+Time limit per test: 3 seconds
+Memory limit per test: 256 megabytes
+
+You are given an integer 
+𝑁
+N. Arrange the numbers 
+1
+,
+2
+,
+…
+,
+𝑁
+1,2,…,N (all written in decimal representation) in a way so that the resulting number, written in decimal expansion, is the largest. For example, if 
+𝑁
+=
+10
+N=10, the resulting number is 98765432110.
+
+Given two integers 
+𝑁
+N and 
+𝐾
+K, find the 
+𝐾
+K-th leftmost digit from such number representation, or 
+−
+1
+−1 if the resulting number has less than 
+𝐾
+K digits.
+
+Input
+The first line contains an integer 
+𝑇
+T 
+(
+1
+≤
+𝑇
+≤
+100
+)
+(1≤T≤100), the number of test cases. Each of the following 
+𝑇
+T lines contains two numbers 
+𝑁
+N and 
+𝐾
+K 
+(
+0
+<
+𝑁
+,
+𝐾
+≤
+1
+0
+18
+)
+(0<N,K≤10 
+18
+ ).
+
+Output
+For each test case, output the 
+𝐾
+K-th leftmost digit of the resulting number on a single line, or 
+−
+1
+−1 if that digit does not exist.
+
+Example
+Input
+Copy code
+3
+10 1
+10 10
+5 7
+Output
+diff
+Copy code
+9
+1
+-1
