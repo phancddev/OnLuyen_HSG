@@ -3,7 +3,7 @@ import glob
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-# GP Conversion table based on the image
+# GP Conversion 
 gp_conversion = {
     1: 500, 2: 485, 3: 471, 4: 458, 5: 446, 6: 434, 7: 423, 8: 412, 9: 401, 10: 391, 
     11: 381, 12: 371, 13: 361, 14: 352, 15: 343, 16: 334, 17: 325, 18: 316, 19: 308, 20: 300,
@@ -17,35 +17,35 @@ gp_conversion = {
     91: 10, 92: 9, 93: 8, 94: 7, 95: 6, 96: 5, 97: 4, 98: 3, 99: 2, 100: 1
 }
 
-# List all CSV files matching the pattern 'week*.csv'
+
 csv_files = glob.glob('week*.csv')
 
-# Dictionary to hold cumulative GP points for each participant
+
 gp_points = {}
 
-# Read each CSV file and accumulate GP points
+
 for file in csv_files:
     df = pd.read_csv(file)
     
-    # Iterate over the rows (rankings) in the CSV file
+    
     for index, row in df.iterrows():
         username = row['Username']
-        rank = index + 1  # Rank is the row number starting from 1
+        rank = index + 1  
         
-        # Get GP points for this rank
+        
         points = gp_conversion.get(rank, 0)
         
-        # Add to cumulative GP points
+       
         if username not in gp_points:
             gp_points[username] = {'GP_Points': 0, 'Fullname': row['Fullname'], 'School': row['School']}
         
         gp_points[username]['GP_Points'] += points
 
-# Convert the dictionary to a DataFrame
+
 gp_df = pd.DataFrame.from_dict(gp_points, orient='index').reset_index()
 gp_df = gp_df.rename(columns={'index': 'Username'})
 
-# Sort by GP points in descending order
+
 gp_df = gp_df.sort_values(by='GP_Points', ascending=False)
 
 # Create PDF

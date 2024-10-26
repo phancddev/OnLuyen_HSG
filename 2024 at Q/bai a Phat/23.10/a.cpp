@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+
+
 int main() {
     string s = "Hello, World!";
     cout << s << endl;
@@ -26,3 +28,8 @@ int main() {
     // Checking if a string is empty
     if (s.empty()) {
         cout << "String is empty" << endl;
+
+
+
+    }
+    

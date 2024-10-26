@@ -67,7 +67,7 @@ int minSwapsToSimplePermutation(const vector<int>& arr) {
 
     return totalSwaps;
 }
-
+//sweetie.zz E
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
